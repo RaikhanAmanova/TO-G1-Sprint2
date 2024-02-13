@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Strim2Baza:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Strim2Baza_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Strim2Baza/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Strim2Baza" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
