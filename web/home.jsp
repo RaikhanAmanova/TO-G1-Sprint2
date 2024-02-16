@@ -25,14 +25,20 @@
     <br><br>
     <p class="fs-2" style="text-align: center"><b>Welcome To Bitlab Shop</b></p>
     <p class="fs-4" style="text-align: center">Electronic devices with high quality and service</p>
+    <div style="margin-bottom: 10px">
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+            ADD ITEMS
+        </button>
+    </div>
+
     <div class="row text-center">
         <%
             List<Item> items = (List<Item>) request.getAttribute("tovary");
             for(Item item : items){
+
         %>
         <div class="col-md-4 mb-4">
             <div class="card h-100">
-
                 <div class="card-body">
                     <h5 class="card-header"><%= item.getName() %></h5>
                     <p class="card-text"><%= item.getDescription() %></p>
@@ -41,9 +47,42 @@
                 </div>
             </div>
         </div>
+
         <%
             }
         %>
+    </div>
+
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Новое задание</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/add" method="post">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="nameField" class="form-label">Name: </label>
+                            <input name = "name" class="form-control" type="text" id = "nameField">
+                        </div>
+                        <div class="mb-3">
+                            <label for="descriptionField" class="form-label">Description: </label>
+                            <input name = "description" class="form-control" type="text" id = "descriptionField">
+                        </div>
+                        <div class="mb-3">
+                            <label for="priceField" class="form-label">Price: </label>
+                            <input name = "price" class="form-control" type="number" id = "priceField">
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                        </div>
+                </form>
+            </div>
+        </div>
     </div>
 
 </div>

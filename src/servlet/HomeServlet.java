@@ -18,5 +18,6 @@ public class HomeServlet extends HttpServlet {
         List<Item> items = DbManager.getItems();
         req.setAttribute("tovary", items);
         req.getRequestDispatcher("home.jsp").forward(req,resp);
+
     }
 }

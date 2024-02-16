@@ -17,7 +17,7 @@
                     <a class="nav-link" href="#">By Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sign IN</a>
+                    <a class="nav-link" href="login.jsp">Sign IN</a>
                 </li>
             </ul>
         </form>

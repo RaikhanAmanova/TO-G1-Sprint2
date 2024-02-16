@@ -65,7 +65,7 @@ public class DbManager {
         try{
           var statement = connection.prepareStatement(
                     "SELECT * FROM USERS " +
-                            "WHERE EMAIL = email"
+                            "WHERE EMAIL = ?"
             );
           statement.setString(1, email);
           var resultSet = statement.executeQuery();
@@ -73,6 +73,7 @@ public class DbManager {
               user = new User();
               user.setId(resultSet.getLong("ID"));
               user.setEmail(email);
+              user.setEmail(resultSet.getString("EMAIL"));
               user.setPassword(resultSet.getString("PASSWORD"));
               user.setFullName(resultSet.getString("FULL_NAME"));
           }
@@ -84,6 +85,23 @@ public class DbManager {
         return user;
 
     }
+    public static void addTovar(Item item) {
+        try {
+            var statement = connection.prepareStatement(
+                    "INSERT INTO ITEMS (NAME, DESCRIPTION, PRICE) VALUES (?, ?, ?)"
+            );
+            statement.setString(1, item.getName());
+            statement.setString(2, item.getDescription());
+            statement.setDouble(3, item.getPrice());
+
+            statement.executeUpdate();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Ошибка при добавлении товара в базу данных", e);
+        }
+    }
+
 
 }
 
